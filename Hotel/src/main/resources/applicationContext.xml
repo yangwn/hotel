@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"
+	default-autowire="byName">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.ibm.data.mining.hotel" />
+	
+	<context:property-placeholder location="file:./conf.properties" />
+	<!-- <context:property-placeholder location="classpath:./conf.properties" /> -->
+
+	<!-- user baseinfo config parameters -->
+	<bean id="userBaseInfoConfigParameters"
+		class="com.ibm.data.mining.hotel.repository.UserBaseInfoConfigParameters">
+		<!-- 消费层次 -->
+		<property name="costLevel">
+			<list>
+				<value>1</value><!-- 500以下 -->
+				<value>2</value><!-- 500～1000 -->
+				<value>3</value><!-- 1000以上 -->
+			</list>
+		</property>
+		<!-- 所到城市 -->
+		<property name="cityNames">
+			<list>
+				<value>1</value><!-- 北京 -->
+				<value>2</value><!-- 上海 -->
+				<value>3</value><!-- 天津 -->
+				<value>4</value><!-- 深圳 -->
+				<value>5</value><!-- 厦门 -->
+				<value>6</value><!-- 杭州 -->
+				<value>7</value><!-- 三亚 -->
+				<value>8</value><!-- 大连 -->
+				<value>9</value><!-- 青岛 -->
+			</list>
+		</property>
+		<!-- 房间类型 -->
+		<property name="roomKind">
+			<list>
+				<value>1</value><!-- 套房 -->
+				<value>2</value><!-- 大床房 -->
+				<value>3</value><!-- 标准间 -->
+			</list>
+		</property>
+		<!-- 订房途径 -->
+		<property name="bookedChannel">
+			<list>
+				<value>1</value><!-- 网络 -->
+				<value>2</value><!-- 电话 -->
+				<value>3</value><!-- 直接预订 -->
+			</list>
+		</property>
+		<!-- 有无网络 -->
+		<property name="hasNetwork">
+			<list>
+				<value>0</value><!-- 否 -->
+				<value>1</value><!-- 是 -->
+			</list>
+		</property>
+		<!-- 是否吸烟 -->
+		<property name="isSmoke">
+			<list>
+				<value>0</value><!-- 否 -->
+				<value>1</value><!-- 是 -->
+			</list>
+		</property>
+		<!-- 是否加床 -->
+		<property name="isAddedBed">
+			<list>
+				<value>0</value><!-- 否 -->
+				<value>1</value><!-- 是 -->
+			</list>
+		</property>
+		<!-- 是否点餐 -->
+		<property name="isOrderFood">
+			<list>
+				<value>0</value><!-- 否 -->
+				<value>1</value><!-- 是 -->
+			</list>
+		</property>
+		<!-- 是否提供早餐 -->
+		<property name="hasBreakfast">
+			<list>
+				<value>0</value><!-- 否 -->
+				<value>1</value><!-- 是 -->
+			</list>
+		</property>
+		<!-- 付费方式 -->
+		<property name="payWay">
+			<list>
+				<value>1</value><!-- 信用卡 -->
+				<value>2</value><!-- 第三方支付 -->
+				<value>3</value><!-- 现金 -->
+			</list>
+		</property>
+		<!-- 订房用途 -->
+		<property name="usedPurpose">
+			<list>
+				<value>1</value><!-- 工作 -->
+				<value>2</value><!-- 旅游 -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- 满意度 bean -->
+	<bean id="userEvaluateInfoConfigParameters"
+		class="com.ibm.data.mining.hotel.repository.UserEvaluateInfoConfigParameters" />
+
+</beans>
